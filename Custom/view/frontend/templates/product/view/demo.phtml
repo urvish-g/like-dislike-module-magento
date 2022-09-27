@@ -1,0 +1,42 @@
+
+<div id="Custome_like_dislike">
+	<span class="like_product" id="like_dislike" value="yes">Like</span>
+	<span class="Dislike_product" id="like_dislike" value="no">Dislike</span>
+</div>
+<?php 
+    $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+    $product = $objectManager->get('Magento\Framework\Registry')->registry('current_product');//get current product
+    $producid = $product->getId();
+    // echo $product->getName();
+    
+?>
+
+<style type="text/css">
+	div#Custome_like_dislike .like_product {
+	    background: #006bb4;
+	    color: #fff;
+	    padding: 8px 30px;
+	    font-size: 15px;
+	    border: 1px solid #000;
+	    cursor: pointer;
+	}
+	div#Custome_like_dislike .Dislike_product {
+	    background: #006bb4;
+	    color: #fff;
+	    padding: 8px 30px;
+	    font-size: 15px;
+	    border: 1px solid #000;
+	    cursor: pointer;
+	}
+</style>
+
+
+<script type="text/x-magento-init">
+{
+    "*": {
+        "Like_Custom/js/product_custom_like": {
+        	"baseurl" : "<?= $this->getBaseUrl(); ?>",
+        	"productid" : "<?=$producid?>"
+        }
+    }
+}</script>

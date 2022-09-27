@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Like_Custom::like_dislike_manege" title="Like Dislike Manage" module="Like_Custom" sortOrder="20" action="custom/index/index" resource="Like_Custom::like_dislike_manege"/>
+    </menu>
+</config>

@@ -1,0 +1,71 @@
+<?php
+	$customerdata = $block->getLikedislikedata();
+	$cutomerid = $block->getCustomerid();
+	?>
+	<table>
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Proudct</th>
+				<th>Product Name</th>
+				<th>Like/Dislike</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+
+
+	<?php
+	foreach ($customerdata as $value) {
+		?>
+		<tr>
+			<td><?=$value['id']?></td>
+			<td><?=$value['product_id']?></td>
+			<?php
+			$product = $block->getProduct($value['product_id']);
+			$productname = $product->getName();
+			?>
+			<td><?=$productname?></td>
+			<?php
+			$likedislike = '';
+			$actionvalue = '';
+			$actionlable =  '';
+			if($value['like_dislike'] == 'yes')
+			{
+				$likedislike = "Like";
+				$actionvalue = 'no';
+				$actionlable = "Dislike";
+			}
+			else
+			{
+				$likedislike = "Dislike";	
+				$actionvalue = "yes";
+				$actionlable = "Like";
+			}
+			?>
+			<td id="likedislike_<?=$value['product_id']?>"><?=$likedislike?></td>
+			<td><a value="<?=$actionvalue?>" id="likedislike_action" productid="<?=$value['product_id']?>"><?=$actionlable?></a></td>
+
+		</tr>
+			
+
+
+
+
+		<?php
+	}
+?>
+		</tbody>
+	</table>
+
+<script type="text/x-magento-init">
+{
+    "*": {
+        "Like_Custom/js/account_custom_like": {
+
+        	"baseurl" : "<?= $this->getBaseUrl(); ?>",
+        	"customerid" : "<?=$cutomerid?>"
+        	
+        }
+    }
+}</script>
